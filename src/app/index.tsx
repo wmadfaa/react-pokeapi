@@ -1,28 +1,20 @@
-import React, { Suspense, lazy } from "react";
-import { AnimatePresence } from "framer-motion";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { ROUTES } from "../globals";
+import { Navigation } from "./navigation";
 
-const MainScreen = lazy(() => import("../routes/main"));
-const DetailsScreen = lazy(() => import("../routes/details"));
-
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 min
+    },
+  },
+});
 
 const App: React.VFC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router>
-        <Suspense fallback={<div>Loading...</div>}>
-          <AnimatePresence>
-            <Switch>
-              <Route exact path={ROUTES.MAIN} component={MainScreen} />
-              <Route path={ROUTES.DETAILS} component={DetailsScreen} />
-            </Switch>
-          </AnimatePresence>
-        </Suspense>
-      </Router>
+      <Navigation />
       <ReactQueryDevtools />
     </QueryClientProvider>
   );
