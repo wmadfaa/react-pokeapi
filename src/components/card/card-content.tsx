@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import ProgressiveImage from "react-progressive-image-loading";
-import { PokemonTypeColors, PokemonTypePlaceholders } from "../../globals";
 import { leftPad } from "../../utils/leftPad";
 import { usePokemonQuery } from "../../services/usePokemonQuery";
 import { motion } from "framer-motion";
+import { getPokemonImgAttrByTypes } from "../../utils/components";
 
 export interface CardContentProps {
   id: string;
@@ -15,6 +15,10 @@ export const CardContent: React.VFC<CardContentProps> = ({
   setIsLoading,
 }) => {
   const { data, isLoading } = usePokemonQuery(id);
+  const imgAttr = useMemo(
+    () => (data?.types ? getPokemonImgAttrByTypes(data.types) : null),
+    [data?.types]
+  );
 
   useEffect(() => {
     if (data && !isLoading) {
@@ -22,23 +26,7 @@ export const CardContent: React.VFC<CardContentProps> = ({
     }
   }, [data, id, isLoading, setIsLoading]);
 
-  if (!data || isLoading) return null;
-
-  const backgroundColors = data.types.map(({ type }) => {
-    const [[, backgroundColor]] = Object.entries(PokemonTypeColors).filter(
-      ([key, _]) => key === type.name
-    );
-
-    return backgroundColor;
-  });
-
-  const imagePlaceholder = data.types.map(({ type }) => {
-    const [[, image]] = Object.entries(PokemonTypePlaceholders).filter(
-      ([key, _]) => key === type.name
-    );
-
-    return image;
-  });
+  if (!data || !imgAttr /* only for type checking */) return null;
 
   return (
     <motion.div
@@ -63,10 +51,10 @@ export const CardContent: React.VFC<CardContentProps> = ({
       >
         <div
           className="flex-shrink-0 mx-auto rounded-full"
-          style={{ backgroundColor: backgroundColors[0].light }}
+          style={{ backgroundColor: imgAttr.colors[0].light }}
         >
           <ProgressiveImage
-            preview={imagePlaceholder[0]}
+            preview={imgAttr.placeholders[0]}
             src={data.sprites.front_default}
             render={(src, style) => (
               <img
