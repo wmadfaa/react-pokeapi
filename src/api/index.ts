@@ -1,6 +1,11 @@
 import axios from "axios";
 import deepmerge from "deepmerge";
-import { Pokemon, PokemonsList } from "../types/pokeapi";
+import {
+  EvolutionChain,
+  Pokemon,
+  PokemonsList,
+  PokemonSpecies,
+} from "../types/pokeapi";
 import {
   extractPokemonIdFromUrl,
   extractSearchParams,
@@ -59,4 +64,14 @@ export async function getPokemonsList(interval: {
       id: extractPokemonIdFromUrl(url),
     })),
   };
+}
+
+export async function getPokemonSpecies(id: string) {
+  const { data } = await api.get<PokemonSpecies>(`pokemon-species/${id}`);
+  return data;
+}
+
+export async function getEvolutionChain(id: string) {
+  const { data } = await api.get<EvolutionChain>(`evolution-chain/${id}`);
+  return data;
 }
