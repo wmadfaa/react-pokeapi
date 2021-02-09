@@ -3,6 +3,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { Item } from "../components/Item";
 import { AnimatePresence } from "framer-motion";
 import { List } from "../components/List";
+import Portal from "../components/Portal";
 
 type TParams = { id: string };
 
@@ -14,9 +15,13 @@ const DetailsScreen: React.VFC<DetailsScreenProps> = ({ match }) => {
 
   return (
     <>
-      <List />
+      <List selectedId={id} />
       <AnimatePresence>
-        {id && imageHasLoaded && <Item id={id} key="item" />}
+        {id && imageHasLoaded && (
+          <Portal>
+            <Item id={id} key="item" />
+          </Portal>
+        )}
       </AnimatePresence>
     </>
   );

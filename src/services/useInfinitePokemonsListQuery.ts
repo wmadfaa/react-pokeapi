@@ -6,6 +6,7 @@ import {
 } from "../api";
 import { useAsyncCallback } from "react-async-hook";
 import { FetchInfiniteQueryOptions } from "react-query/types/core/types";
+import { useMemo } from "react";
 
 const DEFAULT_POKEMONS_LIST_PARAMS: PokemonsListParams = {
   limit: 20,

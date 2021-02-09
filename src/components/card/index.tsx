@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { CardContent } from "./card-content";
 
 export interface CardProps {
   id: string;
   inView: boolean;
+  isSelected: boolean;
 }
 
 export const Card: React.VFC<CardProps> = ({ id, inView }) => {
@@ -25,6 +27,7 @@ export const Card: React.VFC<CardProps> = ({ id, inView }) => {
           </div>
         </div>
       )}
+      {inView && !isLoading && <Link to={id} className={`card-open-link`} />}
     </>
   );
 };

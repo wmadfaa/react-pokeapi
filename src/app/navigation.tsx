@@ -8,7 +8,7 @@ import DetailsScreen from "../routes/details";
 
 export function Navigation() {
   return (
-    <div className="container">
+    <div className="max-w-screen-lg">
       <AnimateSharedLayout type="crossfade">
         <Header />
         <Router>

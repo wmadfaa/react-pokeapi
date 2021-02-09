@@ -11,7 +11,6 @@
     "react-async-hook": "^3.6.2",
     "react-dom": "^17.0.1",
     "react-intersection-observer": "^8.31.0",
-    "react-lorem-ipsum": "^1.4.9",
     "react-progressive-image-loading": "^3.0.3",
     "react-query": "^3.8.2",
     "react-router-dom": "^5.2.0",
@@ -31,6 +30,7 @@
   },
   "devDependencies": {
     "@craco/craco": "^6.1.1",
+    "@jinsung.lim/tailwindcss-filters": "^0.1.1",
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
