@@ -1,5 +1,9 @@
 import { useInfiniteQuery, useIsFetching, useQueryClient } from "react-query";
-import { getPokemonsList, PokemonsList, PokemonsListParams } from "../api";
+import {
+  getPokemonsList,
+  TransformedPokemonsList,
+  PokemonsListParams,
+} from "../api";
 import { useAsyncCallback } from "react-async-hook";
 import { FetchInfiniteQueryOptions } from "react-query/types/core/types";
 
@@ -9,9 +13,9 @@ const DEFAULT_POKEMONS_LIST_PARAMS: PokemonsListParams = {
 };
 
 const fetchInfiniteQueryOptions: FetchInfiniteQueryOptions<
-  PokemonsList,
+  TransformedPokemonsList,
   Error,
-  PokemonsList
+  TransformedPokemonsList
 > = {
   getPreviousPageParam: ({ previous }) => previous ?? false,
   getNextPageParam: ({ next }) => next ?? false,
@@ -20,7 +24,11 @@ const fetchInfiniteQueryOptions: FetchInfiniteQueryOptions<
 export function useInfinitePokemonsListQuery(
   interval = DEFAULT_POKEMONS_LIST_PARAMS
 ) {
-  return useInfiniteQuery<PokemonsList, Error, PokemonsList>(
+  return useInfiniteQuery<
+    TransformedPokemonsList,
+    Error,
+    TransformedPokemonsList
+  >(
     ["pokemons-list", interval],
     ({ pageParam = interval }) => {
       return getPokemonsList(pageParam);

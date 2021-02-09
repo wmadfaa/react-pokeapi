@@ -22,3 +22,8 @@ serviceWorkerRegistration.register();
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 export { extractSearchParams } from "./utils/api";
+export { leftPad } from "./utils/leftPad";
+export { transformSpriteToBaseImage } from "./utils/api";
+export { isNumeric } from "./utils/type-guards";
+export { extractPokemonIdFromUrl } from "./utils/api";
+export { getPokemonImageUrl } from "./utils/api";
