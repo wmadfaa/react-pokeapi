@@ -33,7 +33,10 @@ export function useInfinitePokemonsListQuery(
     ({ pageParam = interval }) => {
       return getPokemonsList(pageParam);
     },
-    fetchInfiniteQueryOptions
+    {
+      getPreviousPageParam: ({ previous }) => previous ?? false,
+      getNextPageParam: ({ next }) => next ?? false,
+    }
   );
 }
 

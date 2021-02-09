@@ -33,10 +33,11 @@ export interface TransformedPokemonsList {
   results: Record<"name" | "id", string>[];
 }
 
-export async function getPokemonsList(
-  limit: number,
-  offset?: number
-): Promise<TransformedPokemonsList> {
+export async function getPokemonsList(interval: {
+  limit: number;
+  offset?: number;
+}): Promise<TransformedPokemonsList> {
+  const { limit, offset } = interval;
   const {
     data: { previous, next, results },
   } = await api.get<PokemonsList>(`pokemon?limit=${limit}&offset=${offset}`);

@@ -6,7 +6,9 @@ dependencies:
   react: 17.0.1
   react-async-hook: 3.6.2_react@17.0.1
   react-dom: 17.0.1_react@17.0.1
+  react-intersection-observer: 8.31.0_react@17.0.1
   react-lorem-ipsum: 1.4.9
+  react-progressive-image-loading: 3.0.3
   react-query: 3.8.2_react-dom@17.0.1+react@17.0.1
   react-router-dom: 5.2.0_react@17.0.1
   utility-types: 3.10.0
@@ -10870,6 +10872,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
+  /react-intersection-observer/8.31.0_react@17.0.1:
+    dependencies:
+      react: 17.0.1
+    dev: false
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0
+    resolution:
+      integrity: sha512-XraIC/tkrD9JtrmVA7ypEN1QIpKc52mXBH1u/bz/aicRLo8QQEJQAMUTb8mz4B6dqpPwyzgjrr7Ljv/2ACDtqw==
   /react-is/16.13.1:
     resolution:
       integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -10881,6 +10891,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-maYf2KTltui/Fnxrq2ttoKnpIm9JO6j5aYeNvCjEPCKGVMJwWNFL75Nb9hgXnMQGHTHSR4KBSIUnCPD3CzSh3g==
+  /react-progressive-image-loading/3.0.3:
+    dev: false
+    resolution:
+      integrity: sha1-fpkpi5vXa8fc+6nN+DwmPUHxfcM=
   /react-query/3.8.2_react-dom@17.0.1+react@17.0.1:
     dependencies:
       '@babel/runtime': 7.12.13
@@ -13636,7 +13650,9 @@ specifiers:
   react: ^17.0.1
   react-async-hook: ^3.6.2
   react-dom: ^17.0.1
+  react-intersection-observer: ^8.31.0
   react-lorem-ipsum: ^1.4.9
+  react-progressive-image-loading: ^3.0.3
   react-query: ^3.8.2
   react-router-dom: ^5.2.0
   react-scripts: 4.0.2

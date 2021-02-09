@@ -14,7 +14,7 @@ const DetailsScreen: React.VFC<DetailsScreenProps> = ({ match }) => {
 
   return (
     <>
-      <List selectedId={id} />
+      <List />
       <AnimatePresence>
         {id && imageHasLoaded && <Item id={id} key="item" />}
       </AnimatePresence>
