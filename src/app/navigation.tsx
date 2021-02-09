@@ -1,32 +1,20 @@
-import React, { lazy, Suspense } from "react";
-import { useAsync } from "react-async-hook";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
-import { usePrefetchPokemonsList } from "../services/useInfinitePokemonsListQuery";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { AnimateSharedLayout } from "framer-motion";
 import { ROUTES } from "../globals";
+import { Header } from "../components/Header";
 
-const MainScreen = lazy(() => import("../routes/main"));
-const DetailsScreen = lazy(() => import("../routes/details"));
+import DetailsScreen from "../routes/details";
 
 export function Navigation() {
-  const prefetchPokemonsList = usePrefetchPokemonsList();
-
-  useAsync(async () => {
-    if (!prefetchPokemonsList.loading) {
-      await prefetchPokemonsList.execute();
-    }
-  }, []);
-
   return (
-    <Router>
-      <Suspense fallback={<div>Loading...</div>}>
-        <AnimatePresence>
-          <Switch>
-            <Route exact path={ROUTES.MAIN} component={MainScreen} />
-            <Route path={ROUTES.DETAILS} component={DetailsScreen} />
-          </Switch>
-        </AnimatePresence>
-      </Suspense>
-    </Router>
+    <div className="container">
+      <AnimateSharedLayout type="crossfade">
+        <Header />
+        <Router>
+          <Route path={["/:id", "/"]} component={DetailsScreen} />
+        </Router>
+      </AnimateSharedLayout>
+    </div>
   );
 }
