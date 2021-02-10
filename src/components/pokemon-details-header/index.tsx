@@ -19,7 +19,7 @@ export const PokemonDetailsHeader: React.VFC<PokemonDetailsHeaderProps> = ({
   if (!pokemon || !nativeName) return <PokemonDetailsHeaderSkeleton id={id} />;
 
   return (
-    <motion.div className="flex flex-col lg:flex-row justify-center items-start w-full mx-auto my-4 rounded-lg shadow-lg">
+    <motion.div className="flex flex-col lg:flex-row justify-center items-start w-full mx-auto rounded-lg shadow-lg">
       <motion.div className="w-full">
         <motion.div
           className="px-4 md:px-8 h-24"

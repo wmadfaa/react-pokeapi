@@ -7,5 +7,8 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@jinsung.lim/tailwindcss-filters")],
+  plugins: [
+    require("@jinsung.lim/tailwindcss-filters"),
+    require("@tailwindcss/forms"),
+  ],
 };

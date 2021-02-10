@@ -19,7 +19,8 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-#root {
+#root,
+#portal-root {
   display: flex;
   justify-content: center;
 }

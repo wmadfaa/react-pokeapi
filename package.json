@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.21.1",
+    "classnames": "^2.2.6",
     "deepmerge": "^4.2.2",
     "framer-motion": "^3.3.0",
     "lodash": "^4.17.20",
@@ -32,10 +33,12 @@
   "devDependencies": {
     "@craco/craco": "^6.1.1",
     "@jinsung.lim/tailwindcss-filters": "^0.1.1",
+    "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/classnames": "^2.2.11",
     "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.168",
     "@types/node": "^12.0.0",
