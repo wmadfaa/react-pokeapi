@@ -7,6 +7,7 @@ import { usePokemonSpeciesQuery } from "../services/usePokemonSpeciesQuery";
 import { PokemonDetailsHeader } from "./pokemon-details-header";
 import { Tabs } from "./tabs";
 import Portal from "./Portal";
+import { PokemonInformation } from "./pokemon-information";
 
 const MotionLink = motion.custom(Link);
 
@@ -41,15 +42,19 @@ export const Item: React.VFC<ItemProps> = ({ id }) => {
       <Portal>
         <div className="fixed inset-0 pointer-events-none flex flex-col justify-center lg:px-8 max-w-screen-lg mx-auto px-4 sm:px-6 w-full">
           <motion.div
-            className="overflow-hidden pointer-events-auto flex bg-gray-900 flex-col lg:flex-row justify-center items-start w-full mx-auto my-4 rounded-lg shadow-lg"
+            id="pokemon-infos"
+            className="pointer-events-auto overflow-y-auto flex bg-gray-900 flex-col w-full mx-auto my-4 rounded-lg shadow-lg"
             layoutId={`card-container-${id}`}
+            style={{
+              maxHeight: 655, //sm 592
+            }}
           >
             <PokemonDetailsHeader
               id={id}
               pokemon={pokemon}
               nativeName={nativeName}
             />
-            <Tabs />
+            <PokemonInformation />
           </motion.div>
         </div>
       </Portal>

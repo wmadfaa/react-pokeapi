@@ -20,13 +20,66 @@ export interface Pokemon {
 
 export interface Ability {
   ability: Species;
+  effect_changes: EffectChange[];
+  effect_entries: AbilityEffectEntry[];
+  flavor_text_entries: FlavorTextEntry[];
+  generation: AbilityGeneration;
+  id: number;
   is_hidden: boolean;
+  is_main_series: boolean;
+  name: string;
+  names: AbilityName[];
+  pokemon: AbilityPokemon[];
   slot: number;
 }
 
 export interface Species {
   name: string;
   url: string;
+}
+
+export interface EffectChange {
+  effect_entries: EffectChangeEffectEntry[];
+  version_group: AbilityGeneration;
+}
+
+export interface EffectChangeEffectEntry {
+  effect: string;
+  language: AbilityGeneration;
+}
+
+export interface AbilityGeneration {
+  name: string;
+  url: string;
+}
+
+export interface AbilityEffectEntry {
+  effect: string;
+  language: AbilityGeneration;
+  short_effect: string;
+}
+
+export interface FlavorTextEntry {
+  flavor_text: string;
+  language: Color;
+  version: Color;
+  version_group: AbilityGeneration;
+}
+
+export interface Color {
+  name: string;
+  url: string;
+}
+
+export interface AbilityName {
+  language: AbilityGeneration;
+  name: string;
+}
+
+export interface AbilityPokemon {
+  is_hidden: boolean;
+  pokemon: AbilityGeneration;
+  slot: number;
 }
 
 export interface GameIndex {
@@ -208,11 +261,6 @@ export interface EvolutionDetail {
   turn_upside_down: boolean;
 }
 
-export interface Color {
-  name: string;
-  url: string;
-}
-
 export interface PokemonSpecies {
   base_happiness: number;
   capture_rate: number;
@@ -245,12 +293,6 @@ export interface PokemonSpecies {
 
 export interface EvolutionChainClass {
   url: string;
-}
-
-export interface FlavorTextEntry {
-  flavor_text: string;
-  language: Color;
-  version: Color;
 }
 
 export interface Genus {

@@ -1,6 +1,7 @@
 import axios from "axios";
 import deepmerge from "deepmerge";
 import {
+  Ability,
   EvolutionChain,
   Pokemon,
   PokemonsList,
@@ -74,6 +75,12 @@ export async function getPokemonSpecies(id: string) {
 
 export async function getEvolutionChain(id: string) {
   const { data } = await api.get<EvolutionChain>(`evolution-chain/${id}`);
+  await new Promise((r) => setTimeout(r, 1000));
+  return data;
+}
+
+export async function getPokemonAbility(id: string) {
+  const { data } = await api.get<Ability>(`ability/${id}`);
   await new Promise((r) => setTimeout(r, 1000));
   return data;
 }
