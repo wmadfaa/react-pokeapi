@@ -1,9 +1,8 @@
-import React, { useEffect, useMemo } from "react";
-import ProgressiveImage from "react-progressive-image-loading";
+import React, { useEffect } from "react";
 import { leftPad } from "../../utils/leftPad";
 import { usePokemonQuery } from "../../services/usePokemonQuery";
 import { motion } from "framer-motion";
-import { getPokemonImgAttrByTypes } from "../../utils/components";
+import { PokemonImg } from "../pokemon-img";
 
 export interface CardContentProps {
   id: string;
@@ -15,10 +14,6 @@ export const CardContent: React.VFC<CardContentProps> = ({
   setIsLoading,
 }) => {
   const { data, isLoading } = usePokemonQuery(id);
-  const imgAttr = useMemo(
-    () => (data?.types ? getPokemonImgAttrByTypes(data.types) : null),
-    [data?.types]
-  );
 
   useEffect(() => {
     if (data && !isLoading) {
@@ -26,7 +21,7 @@ export const CardContent: React.VFC<CardContentProps> = ({
     }
   }, [data, id, isLoading, setIsLoading]);
 
-  if (!data || !imgAttr /* only for type checking */) return null;
+  if (!data) return null;
 
   return (
     <motion.div
@@ -49,23 +44,7 @@ export const CardContent: React.VFC<CardContentProps> = ({
         className="flex-grow w-full flex items-center justify-center"
         layoutId={`card-image-container-${id}`}
       >
-        <div
-          className="flex-shrink-0 mx-auto rounded-full"
-          style={{ backgroundColor: imgAttr.colors[0].light }}
-        >
-          <ProgressiveImage
-            preview={imgAttr.placeholders[0]}
-            src={data.sprites.front_default}
-            render={(src, style) => (
-              <img
-                src={src}
-                alt={data.name}
-                style={style}
-                className="-translate-x-1.5 -translate-y-1.5 h-32 scale-125 transform w-32"
-              />
-            )}
-          />
-        </div>
+        <PokemonImg {...data} />
       </motion.div>
     </motion.div>
   );

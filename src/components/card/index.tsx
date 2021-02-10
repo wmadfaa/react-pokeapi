@@ -13,7 +13,11 @@ export const Card: React.VFC<CardProps> = ({ id, inView }) => {
 
   return (
     <>
-      {inView && <CardContent id={id} setIsLoading={setIsLoading} />}
+      {inView && (
+        <Link to={id}>
+          <CardContent id={id} setIsLoading={setIsLoading} />
+        </Link>
+      )}
       {isLoading && (
         <div className="card-content-container animate-pulse">
           <div className="card-content">
@@ -27,7 +31,6 @@ export const Card: React.VFC<CardProps> = ({ id, inView }) => {
           </div>
         </div>
       )}
-      {inView && !isLoading && <Link to={id} className={`card-open-link`} />}
     </>
   );
 };

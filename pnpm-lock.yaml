@@ -10,6 +10,7 @@ dependencies:
   react-progressive-image-loading: 3.0.3
   react-query: 3.8.2_react-dom@17.0.1+react@17.0.1
   react-router-dom: 5.2.0_react@17.0.1
+  react-spring: 8.0.27_react-dom@17.0.1+react@17.0.1
   utility-types: 3.10.0
   workbox-background-sync: 5.1.4
   workbox-broadcast-update: 5.1.4
@@ -11028,6 +11029,18 @@ packages:
         optional: true
     resolution:
       integrity: sha512-okaWNaGDGtnXyM2CLMUl8gYZnAubgxEulC40FYjsxn5bbj+G/mDINdy24wHz4Vypb/LWtIe8rdBU78k/74v8Mw==
+  /react-spring/8.0.27_react-dom@17.0.1+react@17.0.1:
+    dependencies:
+      '@babel/runtime': 7.12.13
+      prop-types: 15.7.2
+      react: 17.0.1
+      react-dom: 17.0.1_react@17.0.1
+    dev: false
+    peerDependencies:
+      react: '>= 16.8.0'
+      react-dom: '>= 16.8.0'
+    resolution:
+      integrity: sha512-nDpWBe3ZVezukNRandTeLSPcwwTMjNVu1IDq9qA/AMiUqHuRN4BeSWvKr3eIxxg1vtiYiOLy4FqdfCP5IoP77g==
   /react/17.0.1:
     dependencies:
       loose-envify: 1.4.0
@@ -13656,6 +13669,7 @@ specifiers:
   react-query: ^3.8.2
   react-router-dom: ^5.2.0
   react-scripts: 4.0.2
+  react-spring: ^8.0.27
   tailwindcss: npm:@tailwindcss/postcss7-compat@^2.0.3
   typescript: ^4.0.3
   utility-types: ^3.10.0
