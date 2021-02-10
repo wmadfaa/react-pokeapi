@@ -5,7 +5,6 @@ import { CardContent } from "./card-content";
 export interface CardProps {
   id: string;
   inView: boolean;
-  isSelected: boolean;
 }
 
 export const Card: React.VFC<CardProps> = ({ id, inView }) => {

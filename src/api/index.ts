@@ -68,10 +68,12 @@ export async function getPokemonsList(interval: {
 
 export async function getPokemonSpecies(id: string) {
   const { data } = await api.get<PokemonSpecies>(`pokemon-species/${id}`);
+  await new Promise((r) => setTimeout(r, 1000));
   return data;
 }
 
 export async function getEvolutionChain(id: string) {
   const { data } = await api.get<EvolutionChain>(`evolution-chain/${id}`);
+  await new Promise((r) => setTimeout(r, 1000));
   return data;
 }

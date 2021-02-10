@@ -11,13 +11,12 @@ interface DetailsScreenProps extends RouteComponentProps<TParams> {}
 
 const DetailsScreen: React.VFC<DetailsScreenProps> = ({ match }) => {
   const { id } = match.params;
-  const imageHasLoaded = true;
 
   return (
     <>
-      <List selectedId={id} />
+      <List />
       <AnimatePresence>
-        {id && imageHasLoaded && (
+        {id && (
           <Portal>
             <Item id={id} key="item" />
           </Portal>

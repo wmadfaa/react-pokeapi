@@ -5,11 +5,9 @@ import { InView, useInView } from "react-intersection-observer";
 import { Card } from "./card";
 import { useAsync } from "react-async-hook";
 
-export interface ListProps {
-  selectedId: string;
-}
+export interface ListProps {}
 
-export const List: React.VFC<ListProps> = ({ selectedId }) => {
+export const List: React.VFC<ListProps> = () => {
   const { data, fetchNextPage, hasNextPage } = useInfinitePokemonsListQuery();
   const nextAnchorObserver = useInView({
     skip: !hasNextPage,
@@ -32,11 +30,7 @@ export const List: React.VFC<ListProps> = ({ selectedId }) => {
             <InView key={pokemon.id} triggerOnce>
               {({ inView, ref }) => (
                 <li className="card" ref={ref}>
-                  <Card
-                    {...pokemon}
-                    inView={inView}
-                    isSelected={pokemon.id === selectedId}
-                  />
+                  <Card {...pokemon} inView={inView} />
                 </li>
               )}
             </InView>
