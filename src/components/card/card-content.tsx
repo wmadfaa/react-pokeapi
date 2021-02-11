@@ -44,7 +44,7 @@ export const CardContent: React.VFC<CardContentProps> = ({
         className="flex-grow w-full flex items-center justify-center"
         layoutId={`card-image-container-${id}`}
       >
-        <PokemonImg {...data} />
+        <PokemonImg pokemon={data} />
       </motion.div>
     </motion.div>
   );

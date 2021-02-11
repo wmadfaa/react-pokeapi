@@ -3,26 +3,17 @@ import { getPokemonImgAttrByTypes } from "../utils/components";
 import { Pokemon } from "../types/pokeapi";
 import ProgressiveImage from "react-progressive-image-loading";
 
-const MaskSize = 200;
-const ImageSize = 150;
+export interface PokemonImgProps {
+  pokemon: Pokemon;
+  maskSize?: number;
+  imgSize?: number;
+}
 
-const MaskStyling = {
-  width: MaskSize,
-  height: MaskSize,
-  bottom: 0,
-};
-
-const ImageContainerStyling = {
-  width: ImageSize,
-  height: ImageSize,
-  display: "block",
-  left: 0,
-  right: 0,
-  bottom: 25,
-  margin: "auto",
-};
-
-export const PokemonImg: React.VFC<Pokemon> = (pokemon) => {
+export const PokemonImg: React.VFC<PokemonImgProps> = ({
+  pokemon,
+  imgSize = 150,
+  maskSize = 200,
+}) => {
   const imgAttr = useMemo(
     () => (pokemon.types ? getPokemonImgAttrByTypes(pokemon.types) : null),
     [pokemon.types]
@@ -33,16 +24,18 @@ export const PokemonImg: React.VFC<Pokemon> = (pokemon) => {
     <div className="relative mx-auto h-48 w-full">
       <div
         style={{
-          ...MaskStyling,
+          width: maskSize,
+          height: maskSize,
           backgroundColor: imgAttr.colors[0].light,
         }}
-        className="rounded-full absolute inset-x-auto mx-auto z-0 inline-block left-0 right-0"
+        className="bottom-0 rounded-full absolute inset-x-auto mx-auto z-0 inline-block left-0 right-0"
       />
       <div
-        className="cursor-pointer transform hover:-translate-y-2 transition-all duration-300"
+        className="absolute m-auto inset-x-0 block cursor-pointer transform hover:-translate-y-2 transition-all duration-300"
         style={{
-          ...ImageContainerStyling,
-          position: "absolute",
+          width: imgSize,
+          height: imgSize,
+          bottom: maskSize / 8,
         }}
       >
         <ProgressiveImage

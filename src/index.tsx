@@ -27,3 +27,4 @@ export { transformSpriteToBaseImage } from "./utils/api";
 export { isNumeric } from "./utils/type-guards";
 export { extractIdFromUrl } from "./utils/api";
 export { getPokemonImageUrl } from "./utils/api";
+export { BASE_URL } from "./configs/api";

@@ -9,20 +9,20 @@ import {
   PokemonSpecies,
 } from "../types/pokeapi";
 import {
-  extractPokemonEvolutions,
   extractIdFromUrl,
+  extractPokemonEvolutions,
   extractSearchParams,
   getPokemonImageUrl,
 } from "../utils/api";
+import { BASE_URL } from "../configs/api";
+// TODO: split the api getters
 
-const BASE_URL = "https://pokeapi.co/api/v2/";
-
-export const api = axios.create({
+export const httpClient = axios.create({
   baseURL: BASE_URL,
 });
 
 export async function getPokemon(id: string): Promise<Pokemon> {
-  const { data } = await api.get<Pokemon>(`pokemon/${id}`);
+  const { data } = await httpClient.get<Pokemon>(`pokemon/${id}`);
 
   const pokemonImageUrl = getPokemonImageUrl(data.id);
 
@@ -48,7 +48,9 @@ export async function getPokemonsList(interval: {
   const { limit, offset } = interval;
   const {
     data: { previous, next, results },
-  } = await api.get<PokemonsList>(`pokemon?limit=${limit}&offset=${offset}`);
+  } = await httpClient.get<PokemonsList>(
+    `pokemon?limit=${limit}&offset=${offset}`
+  );
 
   const matchPokemonParams = (params: object) => params.hasOwnProperty("limit");
 
@@ -73,7 +75,7 @@ export async function getPokemonAbilities(id: string) {
   const data = await getPokemon(id);
   let res: Ability[] = [];
   for (let { ability } of data.abilities) {
-    const { data } = await api.get<Ability>(`ability/${ability.name}`);
+    const { data } = await httpClient.get<Ability>(`ability/${ability.name}`);
     res.push(data);
   }
   return res;
@@ -83,19 +85,25 @@ export async function getPokemonMoveDetails(id: string) {
   const data = await getPokemon(id);
   let res: PokemonMoveDetails[] = [];
   for (let { move } of data.moves) {
-    const { data } = await api.get<PokemonMoveDetails>(`move/${move.name}`);
+    const { data } = await httpClient.get<PokemonMoveDetails>(
+      `move/${move.name}`
+    );
     res.push(data);
   }
   return res;
 }
 
 export async function getPokemonSpecies(id: string) {
-  const { data } = await api.get<PokemonSpecies>(`pokemon-species/${id}`);
+  const { data } = await httpClient.get<PokemonSpecies>(
+    `pokemon-species/${id}`
+  );
   return data;
 }
 
 export async function getEvolutionNamesList(id: string) {
-  const { data } = await api.get<EvolutionChain>(`evolution-chain/${id}`);
+  const { data } = await httpClient.get<EvolutionChain>(
+    `evolution-chain/${id}`
+  );
   return extractPokemonEvolutions(data.chain);
 }
 
