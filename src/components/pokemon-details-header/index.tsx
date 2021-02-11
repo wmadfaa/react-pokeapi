@@ -2,7 +2,7 @@ import React from "react";
 import { PokemonDetailsHeaderSkeleton } from "./skeleton";
 import { motion } from "framer-motion";
 import { leftPad } from "../../utils/leftPad";
-import { PokemonImg } from "../pokemon-img";
+import { PokemonImg } from "../pokemon-interactive-img";
 import { Name, Pokemon } from "../../types/pokeapi";
 
 export interface PokemonDetailsHeaderProps {

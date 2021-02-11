@@ -46,6 +46,7 @@ export const PokemonImg: React.VFC<Pokemon> = (pokemon) => {
         render={(src, style) => (
           <animated.img
             src={src}
+            alt={pokemon.name}
             className={styles.card4}
             // @ts-ignore
             style={{ ...style, transform: props.xy.interpolate(trans4) }}
