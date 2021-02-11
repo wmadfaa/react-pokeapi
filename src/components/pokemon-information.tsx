@@ -1,10 +1,22 @@
 import React from "react";
+import { usePokemonQuery } from "../services/usePokemonQuery";
+import { pokemonTailwindColors } from "../globals";
+import { usePokemonMoveDetails } from "../services/usePokemonMoveDetails";
+import { usePokemonAbilitiesQuery } from "../services/usePokemonAbilitiesQuery";
 
 export interface PokemonInformationProps {
-  ability?: string;
+  id: string;
 }
 
-export const PokemonInformation: React.VFC<PokemonInformationProps> = () => {
+export const PokemonInformation: React.VFC<PokemonInformationProps> = ({
+  id,
+}) => {
+  const { data: pokemon } = usePokemonQuery(id);
+  const { data: moves } = usePokemonMoveDetails(id);
+  const { data: abilities } = usePokemonAbilitiesQuery(id);
+
+  if (!pokemon || !moves || !abilities) return null;
+
   return (
     <div className="bg-white shadow sm:rounded-lg">
       <div className="px-4 py-5 sm:px-6">
@@ -17,7 +29,7 @@ export const PokemonInformation: React.VFC<PokemonInformationProps> = () => {
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">Order number</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              16
+              {pokemon.order}
             </dd>
           </div>
 
@@ -25,18 +37,15 @@ export const PokemonInformation: React.VFC<PokemonInformationProps> = () => {
             <dt className="text-sm font-medium text-gray-500">Types</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <ul className="flex space-y-0 flex-row space-x-4">
-                <li className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-                  Badge
-                </li>
-                <li className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                  Badge
-                </li>
-                <li className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                  Badge
-                </li>
-                <li className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                  Badge
-                </li>
+                {pokemon.types.map(({ type }) => (
+                  <li
+                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-${
+                      pokemonTailwindColors[type.name]
+                    }-100 text-${pokemonTailwindColors[type.name]}-800`}
+                  >
+                    {type.name}
+                  </li>
+                ))}
               </ul>
             </dd>
           </div>
@@ -72,17 +81,19 @@ export const PokemonInformation: React.VFC<PokemonInformationProps> = () => {
                           </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
-                          <tr>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                              hp
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                              45
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                              0
-                            </td>
-                          </tr>
+                          {pokemon.stats.map(({ stat, base_stat, effort }) => (
+                            <tr>
+                              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                {stat.name}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                {base_stat}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                {effort}
+                              </td>
+                            </tr>
+                          ))}
                         </tbody>
                       </table>
                     </div>
@@ -99,7 +110,7 @@ export const PokemonInformation: React.VFC<PokemonInformationProps> = () => {
                 <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                   <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                      <table className="min-w-full divide-y divide-gray-200">
+                      <table className="min-w-full divide-y divide-gray-200 overlay-y-scroll max-h-64">
                         <thead className="bg-gray-50">
                           <tr>
                             <th
@@ -128,23 +139,29 @@ export const PokemonInformation: React.VFC<PokemonInformationProps> = () => {
                             </th>
                           </tr>
                         </thead>
-                        <tbody className="bg-white divide-y divide-gray-200">
-                          <tr>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                              razor-wind
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                              normal
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                              100
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                              80
-                            </td>
-                          </tr>
-                        </tbody>
                       </table>
+                      <div className="overflow-auto w-full max-h-96">
+                        <table className="w-full">
+                          <tbody className="bg-white divide-y divide-gray-200">
+                            {moves.map((move) => (
+                              <tr>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                  {move.name || "unknown"}
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                  {move.type.name || "unknown"}
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                  {move.accuracy || "unknown"}
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                  {move.power || "unknown"}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -156,40 +173,25 @@ export const PokemonInformation: React.VFC<PokemonInformationProps> = () => {
             <dt className="text-sm font-medium text-gray-500">Abilities</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <ul className="border border-gray-200 rounded-md divide-y divide-gray-200">
-                <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                  <div className="w-0 flex-1 flex items-center">
-                    <span className="ml-2 flex-1 w-0 truncate">
-                      <p className="text-sm font-medium text-gray-900 truncate">
-                        Leonard Krasner
-                      </p>
-                      <p className="text-sm text-gray-500 truncate">
-                        @leonardkrasner
-                      </p>
-                    </span>
-                  </div>
-                  <div className="ml-4 flex-shrink-0">
-                    <button className="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50">
-                      More
-                    </button>
-                  </div>
-                </li>
-                <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                  <div className="w-0 flex-1 flex items-center">
-                    <span className="ml-2 flex-1 w-0 truncate">
-                      <p className="text-sm font-medium text-gray-900 truncate">
-                        Leonard Krasner
-                      </p>
-                      <p className="text-sm text-gray-500 truncate">
-                        @leonardkrasner
-                      </p>
-                    </span>
-                  </div>
-                  <div className="ml-4 flex-shrink-0">
-                    <button className="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50">
-                      More
-                    </button>
-                  </div>
-                </li>
+                {abilities.map((ability) => (
+                  <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                    <div className="w-0 flex-1 flex items-center">
+                      <span className="ml-2 flex-1 w-0 truncate">
+                        <p className="text-sm font-medium text-gray-900 truncate">
+                          {ability.name}
+                        </p>
+                        <p className="text-sm text-gray-500 truncate">
+                          {ability.generation.name}
+                        </p>
+                      </span>
+                    </div>
+                    <div className="ml-4 flex-shrink-0">
+                      <button className="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50">
+                        More
+                      </button>
+                    </div>
+                  </li>
+                ))}
               </ul>
             </dd>
           </div>

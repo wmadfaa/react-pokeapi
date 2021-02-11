@@ -4,6 +4,7 @@ import {
   Ability,
   EvolutionChain,
   Pokemon,
+  PokemonMoveDetails,
   PokemonsList,
   PokemonSpecies,
 } from "../types/pokeapi";
@@ -79,8 +80,22 @@ export async function getEvolutionChain(id: string) {
   return data;
 }
 
-export async function getPokemonAbility(id: string) {
-  const { data } = await api.get<Ability>(`ability/${id}`);
-  await new Promise((r) => setTimeout(r, 1000));
-  return data;
+export async function getPokemonAbilities(id: string) {
+  const data = await getPokemon(id);
+  let res: Ability[] = [];
+  for (let { ability } of data.abilities) {
+    const { data } = await api.get<Ability>(`ability/${ability.name}`);
+    res.push(data);
+  }
+  return res;
+}
+
+export async function getPokemonMoveDetails(id: string) {
+  const data = await getPokemon(id);
+  let res: PokemonMoveDetails[] = [];
+  for (let { move } of data.moves) {
+    const { data } = await api.get<PokemonMoveDetails>(`move/${move.name}`);
+    res.push(data);
+  }
+  return res;
 }

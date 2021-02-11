@@ -5,7 +5,7 @@ export const ROUTES = <const>{
 
 export const PokemonTypeColors = {
   normal: {
-    light: "#CDCDB9",
+    light: "#cdcdb9",
     medium: "#C4C4A4",
   },
   fire: {
@@ -76,6 +76,27 @@ export const PokemonTypeColors = {
     light: "#EFA7B7",
     medium: "#EE99AC",
   },
+};
+
+export const pokemonTailwindColors: Record<string, string> = {
+  normal: "amber",
+  fire: "orange",
+  fighting: "red",
+  water: "blue",
+  flying: "violet",
+  grass: "green",
+  poison: "purple",
+  electric: "yellow",
+  ground: "amber",
+  psychic: "pink",
+  rock: "trueGray",
+  ice: "lightBlue",
+  bug: "emerald",
+  dragon: "violet",
+  ghost: "purple",
+  dark: "warmGray",
+  steel: "fuchsia",
+  fairy: "rose",
 };
 
 export const importPokemonImage = (image: string) => {

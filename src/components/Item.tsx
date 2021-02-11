@@ -54,7 +54,7 @@ export const Item: React.VFC<ItemProps> = ({ id }) => {
               pokemon={pokemon}
               nativeName={nativeName}
             />
-            <PokemonInformation />
+            <PokemonInformation id={id} />
           </motion.div>
         </div>
       </Portal>
