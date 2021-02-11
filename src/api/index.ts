@@ -10,7 +10,7 @@ import {
 } from "../types/pokeapi";
 import {
   extractPokemonEvolutions,
-  extractPokemonIdFromUrl,
+  extractIdFromUrl,
   extractSearchParams,
   getPokemonImageUrl,
 } from "../utils/api";
@@ -64,7 +64,7 @@ export async function getPokemonsList(interval: {
     next: nextParams,
     results: results.map(({ name, url }) => ({
       name,
-      id: extractPokemonIdFromUrl(url),
+      id: extractIdFromUrl(url),
     })),
   };
 }
@@ -91,11 +91,25 @@ export async function getPokemonMoveDetails(id: string) {
 
 export async function getPokemonSpecies(id: string) {
   const { data } = await api.get<PokemonSpecies>(`pokemon-species/${id}`);
-  await new Promise((r) => setTimeout(r, 1000));
   return data;
 }
 
-export async function getEvolutionChain(id: string) {
+export async function getEvolutionNamesList(id: string) {
   const { data } = await api.get<EvolutionChain>(`evolution-chain/${id}`);
   return extractPokemonEvolutions(data.chain);
+}
+
+export async function getEvolutionChainByPokemonId(pokemonId: string) {
+  const {
+    species: { name: spaceyName },
+  } = await getPokemon(pokemonId);
+  const species = await getPokemonSpecies(spaceyName);
+  const chainId = extractIdFromUrl(species.evolution_chain.url);
+  const namesList = await getEvolutionNamesList(chainId);
+  let pokemons: Pokemon[] = [];
+  for (let name of namesList) {
+    const pokemon = await getPokemon(name);
+    pokemons.push(pokemon);
+  }
+  return pokemons;
 }

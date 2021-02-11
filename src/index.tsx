@@ -25,5 +25,5 @@ export { extractSearchParams } from "./utils/api";
 export { leftPad } from "./utils/leftPad";
 export { transformSpriteToBaseImage } from "./utils/api";
 export { isNumeric } from "./utils/type-guards";
-export { extractPokemonIdFromUrl } from "./utils/api";
+export { extractIdFromUrl } from "./utils/api";
 export { getPokemonImageUrl } from "./utils/api";

@@ -28,7 +28,7 @@ export const transformSpriteToBaseImage = (
   return baseUrl + leftPad(pokemonId, 3) + ".png";
 };
 
-export function extractPokemonIdFromUrl(url: string): string {
+export function extractIdFromUrl(url: string): string {
   const _url = new URL(url);
   const id = compact(_url.pathname.split("/")).pop();
   if (isNumeric(id)) {

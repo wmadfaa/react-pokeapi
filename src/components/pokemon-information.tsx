@@ -16,7 +16,7 @@ export const PokemonInformation: React.VFC<PokemonInformationProps> = ({
   const { data: moves } = usePokemonMoveDetails(id);
   const { data: abilities } = usePokemonAbilitiesQuery(id);
   const { data: evolutionChain } = useEvolutionChainQuery(id);
-
+  console.table(evolutionChain);
   if (!pokemon || !moves || !abilities) return null;
 
   return (
