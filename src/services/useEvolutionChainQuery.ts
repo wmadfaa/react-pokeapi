@@ -1,23 +1,22 @@
 import { useIsFetching, useQuery, useQueryClient } from "react-query";
-import { getPokemon, getEvolutionChain } from "../api";
+import { getEvolutionChain } from "../api";
 import { useAsyncCallback } from "react-async-hook";
-import { EvolutionChain } from "../types/pokeapi";
 
-export function useEvolutionChainQuery(id: string) {
-  return useQuery<EvolutionChain, Error, EvolutionChain>(
-    ["evolution-chain", id],
-    async () => getEvolutionChain(id)
+export function useEvolutionChainQuery(chainId: string) {
+  return useQuery<string[], Error, string[]>(
+    ["evolution-chain", chainId],
+    async () => getEvolutionChain(chainId)
   );
 }
 
-export async function usePrefetchEvolutionChain(pokemonId: string) {
+export async function usePrefetchEvolutionChain(chainId: string) {
   const queryClient = useQueryClient();
-  const isFetching = useIsFetching(["evolution-chain", pokemonId]);
+  const isFetching = useIsFetching(["evolution-chain", chainId]);
 
-  return useAsyncCallback(async (id: string = pokemonId) => {
+  return useAsyncCallback(async (id: string = chainId) => {
     if (!isFetching) {
       await queryClient.prefetchQuery(["evolution-chain", id], async () =>
-        getPokemon(id)
+        getEvolutionChain(id)
       );
     }
   });

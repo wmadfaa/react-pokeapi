@@ -9,6 +9,7 @@ import {
   PokemonSpecies,
 } from "../types/pokeapi";
 import {
+  extractPokemonEvolutions,
   extractPokemonIdFromUrl,
   extractSearchParams,
   getPokemonImageUrl,
@@ -68,18 +69,6 @@ export async function getPokemonsList(interval: {
   };
 }
 
-export async function getPokemonSpecies(id: string) {
-  const { data } = await api.get<PokemonSpecies>(`pokemon-species/${id}`);
-  await new Promise((r) => setTimeout(r, 1000));
-  return data;
-}
-
-export async function getEvolutionChain(id: string) {
-  const { data } = await api.get<EvolutionChain>(`evolution-chain/${id}`);
-  await new Promise((r) => setTimeout(r, 1000));
-  return data;
-}
-
 export async function getPokemonAbilities(id: string) {
   const data = await getPokemon(id);
   let res: Ability[] = [];
@@ -98,4 +87,15 @@ export async function getPokemonMoveDetails(id: string) {
     res.push(data);
   }
   return res;
+}
+
+export async function getPokemonSpecies(id: string) {
+  const { data } = await api.get<PokemonSpecies>(`pokemon-species/${id}`);
+  await new Promise((r) => setTimeout(r, 1000));
+  return data;
+}
+
+export async function getEvolutionChain(id: string) {
+  const { data } = await api.get<EvolutionChain>(`evolution-chain/${id}`);
+  return extractPokemonEvolutions(data.chain);
 }

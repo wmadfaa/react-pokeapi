@@ -1,6 +1,7 @@
 import { leftPad } from "./leftPad";
 import { compact } from "lodash";
 import { isNumeric } from "./type-guards";
+import { Chain } from "../types/pokeapi";
 
 const BASE_IMAGE_URL =
   "https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/";
@@ -40,4 +41,14 @@ export function extractPokemonIdFromUrl(url: string): string {
 
 export function getPokemonImageUrl(id: string | number) {
   return transformSpriteToBaseImage(Number(id), BASE_IMAGE_URL);
+}
+
+export function extractPokemonEvolutions(chain: Chain) {
+  const flatten = (data: Chain, prev: string[] = []): string[] => {
+    if (data.evolves_to.length) {
+      return flatten(data.evolves_to[0], [...prev, data.species.name]);
+    }
+    return [...prev, data.species.name];
+  };
+  return flatten(chain);
 }

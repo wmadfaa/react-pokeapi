@@ -3,6 +3,7 @@ import { usePokemonQuery } from "../services/usePokemonQuery";
 import { pokemonTailwindColors } from "../globals";
 import { usePokemonMoveDetails } from "../services/usePokemonMoveDetails";
 import { usePokemonAbilitiesQuery } from "../services/usePokemonAbilitiesQuery";
+import { useEvolutionChainQuery } from "../services/useEvolutionChainQuery";
 
 export interface PokemonInformationProps {
   id: string;
@@ -14,6 +15,7 @@ export const PokemonInformation: React.VFC<PokemonInformationProps> = ({
   const { data: pokemon } = usePokemonQuery(id);
   const { data: moves } = usePokemonMoveDetails(id);
   const { data: abilities } = usePokemonAbilitiesQuery(id);
+  const { data: evolutionChain } = useEvolutionChainQuery(id);
 
   if (!pokemon || !moves || !abilities) return null;
 
