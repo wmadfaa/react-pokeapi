@@ -1,0 +1,81 @@
+@mixin pokemon-card-width($width, $flex-grow, $base-width: null) {
+  @if ($base-width == null) {
+    $base-width: $width;
+  }
+  flex: $flex-grow 0 $base-width;
+  max-width: $base-width;
+
+  &:nth-child(4n + 1),
+  &:nth-child(4n + 4) {
+    flex: $flex-grow 0 $width;
+    max-width: $width;
+  }
+}
+
+.pokemons-list {
+  @apply flex flex-wrap items-start;
+}
+
+.pokemon-card {
+  height: 460px;
+  @include pokemon-card-width($width: 100%, $flex-grow: 1);
+
+  @apply relative py-2 odd:pl-0 even:pr-0;
+
+  @screen sm {
+    padding: 25px;
+    @include pokemon-card-width($width: 50%, $flex-grow: 0);
+  }
+
+  @screen md {
+    @include pokemon-card-width($width: 60%, $flex-grow: 0, $base-width: 40%);
+  }
+}
+
+.pokemon-card-content {
+  @apply w-full h-full flex flex-col justify-center items-center mx-auto relative rounded-xl bg-gray-900 shadow-lg overflow-hidden pointer-events-auto;
+}
+
+.pokemon-card-header {
+  @apply w-full flex-grow-0 px-4 md:px-8;
+}
+.pokemon-card-subtitle {
+  @apply text-base mt-4 text-white font-medium;
+}
+.pokemon-card-title {
+  @apply text-2xl md:text-3xl lg:text-4xl text-white font-bold pb-6 capitalize;
+}
+
+.pokemon-card-body {
+  @apply flex-grow w-full flex items-center justify-center;
+}
+.pokemon-img {
+  @apply relative mx-auto h-48 w-48 rounded-full;
+}
+.pokemon-img-mask {
+  @apply bottom-0 rounded-full absolute inset-x-auto mx-auto z-0 inline-block left-0 right-0;
+}
+.pokemon-img-wrapper {
+  @apply absolute m-auto inset-x-0 block cursor-pointer transform hover:-translate-y-2 transition-all duration-300;
+}
+
+.pokemon-card-content-skeleton {
+  @apply pokemon-card-content animate-pulse;
+}
+
+.pokemon-card-header-skeleton {
+  @apply pokemon-card-header;
+}
+.pokemon-card-subtitle-skeleton {
+  @apply pokemon-card-subtitle w-2/6 h-4 bg-gray-50 rounded-full;
+}
+.pokemon-card-title-skeleton {
+  @apply pokemon-card-title mt-4 w-3/6 h-4 bg-gray-50 rounded-full;
+}
+
+.pokemon-card-body-skeleton {
+  @apply pokemon-card-body;
+}
+.pokemon-img-skeleton {
+  @apply pokemon-img bg-gray-50;
+}

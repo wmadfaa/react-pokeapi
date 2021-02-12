@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { Item } from "../components/Item";
 import { AnimatePresence } from "framer-motion";
-import { List } from "../components/List";
+import { PokemonsList } from "components/pokemons-list";
 
 type TParams = { id: string };
 
@@ -22,7 +22,7 @@ const DetailsScreen: React.VFC<DetailsScreenProps> = ({ match }) => {
   return (
     <>
       <AnimatePresence initial={false}>
-        <List />
+        <PokemonsList />
         {id && <Item id={id} key="item" />}
       </AnimatePresence>
     </>
