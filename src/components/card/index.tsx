@@ -18,15 +18,13 @@ export const Card: React.VFC<CardProps> = ({ id, inView }) => {
         </Link>
       )}
       {isLoading && (
-        <div className="card-content-container animate-pulse">
-          <div className="card-content">
-            <div className="card-image-container">
-              <div className="card-image" />
-            </div>
-            <div className="title-container w-full">
-              <div className="h-4 bg-gray-50 rounded-full" />
-              <div className="h-4 bg-gray-50 rounded-full w-5/6 mt-4" />
-            </div>
+        <div className="card-content animate-pulse">
+          <div className="card-header">
+            <div className="h-4 bg-gray-50 rounded-full" />
+            <div className="h-4 bg-gray-50 rounded-full w-5/6 mt-4" />
+          </div>
+          <div className="card-body">
+            <div className="card-image" />
           </div>
         </div>
       )}

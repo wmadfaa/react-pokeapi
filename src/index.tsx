@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./index.scss";
 import App from "./app";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
@@ -21,10 +21,3 @@ serviceWorkerRegistration.register();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-export { extractSearchParams } from "./utils/api";
-export { leftPad } from "./utils/leftPad";
-export { transformSpriteToBaseImage } from "./utils/api";
-export { isNumeric } from "./utils/type-guards";
-export { extractIdFromUrl } from "./utils/api";
-export { getPokemonImageUrl } from "./utils/api";
-export { BASE_URL } from "./configs/api";

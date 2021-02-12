@@ -24,14 +24,8 @@ export const CardContent: React.VFC<CardContentProps> = ({
   if (!data) return null;
 
   return (
-    <motion.div
-      className="w-full h-full bg-gray-900 rounded-xl overflow-hidden flex flex-col justify-center items-center"
-      layoutId={`card-container-${id}`}
-    >
-      <motion.div
-        className="w-full flex-grow-0 px-4 md:px-8"
-        layoutId={`title-container-${id}`}
-      >
+    <motion.div className="card-content" layoutId={`card-container-${id}`}>
+      <motion.div className="card-header" layoutId={`title-container-${id}`}>
         <p className="text-md mt-4 text-white font-medium">
           #{leftPad(data.id, 3)}
         </p>
@@ -40,10 +34,7 @@ export const CardContent: React.VFC<CardContentProps> = ({
         </h1>
       </motion.div>
 
-      <motion.div
-        className="flex-grow w-full flex items-center justify-center"
-        layoutId={`card-image-container-${id}`}
-      >
+      <motion.div className="card-body" layoutId={`card-image-container-${id}`}>
         <PokemonImg pokemon={data} />
       </motion.div>
     </motion.div>

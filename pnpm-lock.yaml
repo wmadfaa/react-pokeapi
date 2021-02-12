@@ -46,7 +46,8 @@ devDependencies:
   lint-staged: 10.5.4
   postcss: 7.0.35
   prettier: 2.2.1
-  react-scripts: 4.0.2_react@17.0.1+typescript@4.1.3
+  react-scripts: 4.0.2_730ba70bcc0db60899e08677737002fe
+  sass: 1.32.7
   tailwindcss: /@tailwindcss/postcss7-compat/2.0.3
   typescript: 4.1.3
   web-vitals: 0.2.4
@@ -2013,7 +2014,7 @@ packages:
     dependencies:
       cross-spawn: 7.0.3
       lodash: 4.17.20
-      react-scripts: 4.0.2_react@17.0.1+typescript@4.1.3
+      react-scripts: 4.0.2_730ba70bcc0db60899e08677737002fe
       semver: 7.3.4
       webpack-merge: 4.2.2
     dev: true
@@ -3882,7 +3883,6 @@ packages:
     dev: true
     engines:
       node: '>=8'
-    optional: true
     resolution:
       integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
   /bindings/1.5.0:
@@ -4328,7 +4328,6 @@ packages:
     dev: true
     engines:
       node: '>= 8.10.0'
-    optional: true
     optionalDependencies:
       fsevents: 2.3.2
     resolution:
@@ -4721,7 +4720,7 @@ packages:
       '@craco/craco': 6.1.1_react-scripts@4.0.2
       esbuild-jest: 0.3.0
       esbuild-loader: 2.9.1
-      react-scripts: 4.0.2_react@17.0.1+typescript@4.1.3
+      react-scripts: 4.0.2_730ba70bcc0db60899e08677737002fe
     dev: true
     peerDependencies:
       '@craco/craco': ^5.5.0
@@ -7322,7 +7321,6 @@ packages:
     dev: true
     engines:
       node: '>=8'
-    optional: true
     resolution:
       integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==
   /is-buffer/1.1.6:
@@ -10974,7 +10972,7 @@ packages:
       react: '>=15'
     resolution:
       integrity: sha512-smz1DUuFHRKdcJC0jobGo8cVbhO3x50tCL4icacOlcwDOEQPq4TMqwx3sY1TP+DvtTgz4nm3thuo7A+BK2U0Dw==
-  /react-scripts/4.0.2_react@17.0.1+typescript@4.1.3:
+  /react-scripts/4.0.2_730ba70bcc0db60899e08677737002fe:
     dependencies:
       '@babel/core': 7.12.3
       '@pmmmwh/react-refresh-webpack-plugin': 0.4.3_d00fcc46a48175a4e289da7534b00e9a
@@ -11025,7 +11023,7 @@ packages:
       react-refresh: 0.8.3
       resolve: 1.18.1
       resolve-url-loader: 3.1.2
-      sass-loader: 10.1.1_webpack@4.44.2
+      sass-loader: 10.1.1_sass@1.32.7+webpack@4.44.2
       semver: 7.3.2
       style-loader: 1.3.0_webpack@4.44.2
       terser-webpack-plugin: 4.2.3_webpack@4.44.2
@@ -11044,6 +11042,7 @@ packages:
       fsevents: 2.3.2
     peerDependencies:
       react: '>= 16'
+      sass: '*'
       typescript: ^3.2.1 || ^4
     peerDependenciesMeta:
       typescript:
@@ -11149,7 +11148,6 @@ packages:
     dev: true
     engines:
       node: '>=8.10.0'
-    optional: true
     resolution:
       integrity: sha512-cMhu7c/8rdhkHXWsY+osBhfSy0JikwpHK/5+imo+LpeasTF8ouErHrlYkwT0++njiyuDvc7OFY5T3ukvZ8qmFQ==
   /recursive-readdir/2.2.2:
@@ -11608,11 +11606,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-vTxrZz4dX5W86M6oVWVdOVe72ZiPs41Oi7Z6Km4W5Turyz28mrXSJhhEBZoRtzJWIv3833WKVwLSDWWkEfupMg==
-  /sass-loader/10.1.1_webpack@4.44.2:
+  /sass-loader/10.1.1_sass@1.32.7+webpack@4.44.2:
     dependencies:
       klona: 2.0.4
       loader-utils: 2.0.0
       neo-async: 2.6.2
+      sass: 1.32.7
       schema-utils: 3.0.0
       semver: 7.3.4
       webpack: 4.44.2
@@ -11633,6 +11632,15 @@ packages:
         optional: true
     resolution:
       integrity: sha512-W6gVDXAd5hR/WHsPicvZdjAWHBcEJ44UahgxcIE196fW2ong0ZHMPO1kZuI5q0VlvMQZh32gpv69PLWQm70qrw==
+  /sass/1.32.7:
+    dependencies:
+      chokidar: 3.5.1
+    dev: true
+    engines:
+      node: '>=8.9.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-C8Z4bjqGWnsYa11o8hpKAuoyFdRhrSHcYjCr+XAWVPSIQqC8mp2f5Dx4em0dKYehPzg5XSekmCjqJnEZbIls9A==
   /sax/1.2.4:
     dev: true
     resolution:
@@ -13694,6 +13702,7 @@ specifiers:
   react-router-dom: ^5.2.0
   react-scripts: 4.0.2
   react-spring: ^8.0.27
+  sass: ^1.32.7
   tailwindcss: npm:@tailwindcss/postcss7-compat@^2.0.3
   typescript: ^4.0.3
   utility-types: ^3.10.0
