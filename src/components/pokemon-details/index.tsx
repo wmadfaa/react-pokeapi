@@ -22,7 +22,7 @@ export const PokemonDetails: React.VFC<PokemonDetailsProps> = (props) => {
             layoutId={`pokemon-card-content-${props.id}`}
           >
             <PokemonDetailsHeader id={props.id} />
-            <PokemonDetailsNavigation />
+            <PokemonDetailsNavigation id={props.id} />
           </motion.div>
         </div>
       </Portal>

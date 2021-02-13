@@ -1,4 +1,3 @@
-import axios from "axios";
 import deepmerge from "deepmerge";
 import {
   Ability,
@@ -14,12 +13,9 @@ import {
   extractSearchParams,
   getPokemonImageUrl,
 } from "../utils/api";
-import { BASE_URL } from "../configs/api";
-// TODO: split the api getters
+import { httpClient } from "./http-client";
 
-export const httpClient = axios.create({
-  baseURL: BASE_URL,
-});
+// TODO: split the api getters
 
 export async function getPokemon(id: string): Promise<Pokemon> {
   const { data } = await httpClient.get<Pokemon>(`pokemon/${id}`);

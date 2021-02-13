@@ -9,10 +9,12 @@ module.exports = {
   variants: {
     extend: {
       padding: ["odd", "even"],
+      width: ["first"],
     },
   },
   plugins: [
     require("@jinsung.lim/tailwindcss-filters"),
     require("@tailwindcss/forms"),
+    require("@tailwindcss/line-clamp"),
   ],
 };

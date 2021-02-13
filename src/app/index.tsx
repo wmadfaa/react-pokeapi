@@ -6,7 +6,7 @@ import { Navigation } from "./navigation";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5, // 5 min
+      staleTime: 1000 * 60 * 60 * 30, // 1 month
     },
   },
 });

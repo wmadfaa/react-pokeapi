@@ -29,6 +29,7 @@ devDependencies:
   '@craco/craco': 6.1.1_react-scripts@4.0.2
   '@jinsung.lim/tailwindcss-filters': 0.1.1
   '@tailwindcss/forms': 0.2.1
+  '@tailwindcss/line-clamp': 0.2.0
   '@tailwindcss/postcss7-compat': 2.0.3
   '@testing-library/jest-dom': 5.11.9
   '@testing-library/react': 11.2.5_react-dom@17.0.1+react@17.0.1
@@ -2557,6 +2558,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-czfvEdY+J2Ogfd6RUSr/ZSUmDxTujr34M++YLnp2cCPC3oJ4kFvFMaRXA6cEXKw7F1hJuapdjXRjsXIEXGgORg==
+  /@tailwindcss/line-clamp/0.2.0:
+    dev: true
+    resolution:
+      integrity: sha512-+jXSdRK3/9V/BCPCr+iNpMMhxWMMv62vn/AS2b3/ClmueGuhCijW3bUwO1IiHnE7uCaF74Sli8jUCv9djwvpLg==
   /@tailwindcss/postcss7-compat/2.0.3:
     dependencies:
       '@fullhuman/postcss-purgecss': 3.1.3
@@ -13671,6 +13676,7 @@ specifiers:
   '@craco/craco': ^6.1.1
   '@jinsung.lim/tailwindcss-filters': ^0.1.1
   '@tailwindcss/forms': ^0.2.1
+  '@tailwindcss/line-clamp': ^0.2.0
   '@tailwindcss/postcss7-compat': ^2.0.3
   '@testing-library/jest-dom': ^5.11.4
   '@testing-library/react': ^11.1.0
