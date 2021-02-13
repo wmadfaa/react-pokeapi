@@ -6,6 +6,7 @@ import { usePokemonQuery } from "services/usePokemonQuery";
 import { usePokemonSpeciesQuery } from "services/usePokemonSpeciesQuery";
 import { PokemonDetailsImg } from "./pokemon-details-img";
 import { PokemonDetailsHeaderSkeleton } from "./pokemon-details-header-skeleton";
+import { getPokemonImgAttrByTypes } from "utils/components";
 
 export interface PokemonDetailsHeaderProps {
   id: string;
@@ -16,6 +17,11 @@ export const PokemonDetailsHeader: React.VFC<PokemonDetailsHeaderProps> = (
 ) => {
   const { data: pokemon } = usePokemonQuery(props.id);
   const { data: species } = usePokemonSpeciesQuery(props.id);
+  const backgroundColor = useMemo(
+    () =>
+      pokemon ? getPokemonImgAttrByTypes(pokemon.types).colors[0].medium : null,
+    [pokemon]
+  );
 
   const nativeName = useMemo(() => {
     if (species && species.names) {
@@ -26,11 +32,15 @@ export const PokemonDetailsHeader: React.VFC<PokemonDetailsHeaderProps> = (
     }
   }, [species]);
 
-  if (!pokemon || !nativeName) return <PokemonDetailsHeaderSkeleton />;
+  if (!pokemon || !nativeName || !backgroundColor)
+    return <PokemonDetailsHeaderSkeleton />;
 
   return (
     <div className="pokemon-details-header">
-      <div className="pokemon-details-header-content">
+      <div
+        className="pokemon-details-header-content"
+        style={{ backgroundColor }}
+      >
         <motion.div
           className="pokemon-details-header-title-container"
           layoutId={`pokemon-card-header-${props.id}`}

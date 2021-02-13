@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Portal from "../Portal";
 import { PokemonDetailsHeader } from "./components/pokemon-details-header";
 import { PokemonDetailsOverlay } from "./components/pokemon-details-overlay";
+import { PokemonDetailsNavigation } from "./components/pokemon-details-navigation";
 
 import "./styles.scss";
 
@@ -21,6 +22,7 @@ export const PokemonDetails: React.VFC<PokemonDetailsProps> = (props) => {
             layoutId={`pokemon-card-content-${props.id}`}
           >
             <PokemonDetailsHeader id={props.id} />
+            <PokemonDetailsNavigation />
           </motion.div>
         </div>
       </Portal>

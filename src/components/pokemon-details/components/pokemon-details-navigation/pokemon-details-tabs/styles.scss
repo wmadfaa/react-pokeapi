@@ -1,0 +1,15 @@
+.pokemon-details-tabs {
+  @apply flex space-x-4;
+}
+
+.pokemon-details-tab {
+  @apply px-3 py-2 font-medium text-sm rounded-md;
+
+  &.default {
+    @apply text-gray-400 hover:text-gray-200;
+  }
+
+  &.current {
+    @apply bg-gray-800 text-gray-200;
+  }
+}
