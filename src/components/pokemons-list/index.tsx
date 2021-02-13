@@ -31,7 +31,7 @@ export const PokemonsList: React.VFC = () => {
     <>
       <div className="pokemons-list">
         {allPokemons.map(({ id }) => (
-          <InView triggerOnce>
+          <InView key={id} triggerOnce>
             {({ ref, inView }) => (
               <PokemonCard id={id} ref={ref} inView={inView} />
             )}

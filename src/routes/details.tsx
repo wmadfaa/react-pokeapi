@@ -3,6 +3,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { Item } from "../components/Item";
 import { AnimatePresence } from "framer-motion";
 import { PokemonsList } from "components/pokemons-list";
+import { PokemonDetails } from "../components/pokemon-details";
 
 type TParams = { id: string };
 
@@ -23,7 +24,7 @@ const DetailsScreen: React.VFC<DetailsScreenProps> = ({ match }) => {
     <>
       <AnimatePresence initial={false}>
         <PokemonsList />
-        {id && <Item id={id} key="item" />}
+        {id && <PokemonDetails id={id} key="item" />}
       </AnimatePresence>
     </>
   );

@@ -19,27 +19,18 @@ export const PokemonDetailsHeader: React.VFC<PokemonDetailsHeaderProps> = ({
   if (!pokemon || !nativeName) return <PokemonDetailsHeaderSkeleton id={id} />;
 
   return (
-    <motion.div
-      id="pokemon-img"
-      className="flex flex-col lg:flex-row justify-center items-start w-full mx-auto rounded-lg shadow-lg"
-    >
-      <motion.div className="w-full">
-        <motion.div
-          className="px-4 md:px-8 h-24"
-          layoutId={`title-container-${id}`}
-        >
-          <p className="text-md mt-4 text-white font-medium">
+    <motion.div className="pokemon-details-card">
+      <motion.div className="pokemon-details-card-content">
+        <motion.div className="pokemon-details-card-header">
+          <motion.p className="pokemon-details-card-subtitle">
             #{leftPad(pokemon.id, 3)}
-          </p>
-          <h1 className="text-2xl md:text-3xl lg:text-4xl text-white font-bold pb-6 capitalize">
+          </motion.p>
+          <motion.h1 className="pokemon-details-card-title">
             {pokemon.name}
-          </h1>
+          </motion.h1>
         </motion.div>
-        <motion.div
-          className="relative text-center mx-auto w-full h-96 mt-8 lg:mt-24"
-          layoutId={`card-image-container-${id}`}
-        >
-          <h1 className="absolute -mt-2 text-6xl z-0 w-full text-white opacity-50 font-extrabold overflow-hidden">
+        <motion.div className="pokemon-details-card-body">
+          <h1 className="pokemon-details-card-native-name">
             {nativeName && nativeName.name}
           </h1>
           <PokemonImg {...pokemon} />

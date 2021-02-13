@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { usePokemonQuery } from "../services/usePokemonQuery";
 import { usePokemonSpeciesQuery } from "../services/usePokemonSpeciesQuery";
 import { PokemonDetailsHeader } from "./pokemon-details-header";
-import { Tabs } from "./tabs";
 import Portal from "./Portal";
 import { PokemonInformation } from "./pokemon-information";
 

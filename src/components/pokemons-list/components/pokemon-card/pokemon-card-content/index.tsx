@@ -35,7 +35,7 @@ export const PokemonCardContent: React.VFC<PokemonCardContentProps> = (
           className="pokemon-card-subtitle"
           layoutId={`pokemon-card-subtitle-${props.id}`}
         >
-          {subtitle}
+          #{subtitle}
         </motion.p>
         <motion.h1
           className="pokemon-card-title"

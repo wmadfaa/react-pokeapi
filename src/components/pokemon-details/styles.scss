@@ -1,0 +1,84 @@
+.pokemon-details-overlay {
+  @apply fixed inset-0 transform w-full transition-colors backdrop backdrop-blur-5 bg-black bg-opacity-80;
+}
+
+.pokemon-details {
+  @apply fixed inset-0 pointer-events-none flex flex-col justify-center lg:px-8 max-w-screen-lg mx-auto px-4 sm:px-6 w-full;
+}
+
+.pokemon-details-content {
+  max-height: 592px;
+  @apply pointer-events-auto overflow-y-auto flex bg-gray-900 flex-col w-full mx-auto my-4 rounded-lg shadow-lg;
+
+  @screen md {
+    max-height: 655px;
+  }
+}
+
+.pokemon-details-header {
+  @apply flex flex-col lg:flex-row justify-center items-start w-full mx-auto rounded-lg shadow-lg;
+}
+
+.pokemon-details-header-content {
+  @apply w-full;
+}
+
+.pokemon-details-header-title-container {
+  @apply px-4 md:px-8 h-24;
+}
+.pokemon-details-header-subtitle {
+  @apply text-base mt-4 text-white font-medium;
+}
+.pokemon-details-header-title {
+  @apply text-2xl md:text-3xl lg:text-4xl text-white font-bold pb-6 capitalize;
+}
+
+.pokemon-details-header-body {
+  @apply relative text-center mx-auto w-full h-96 mt-8 lg:mt-24;
+}
+.pokemon-details-header-native-name {
+  @apply absolute -mt-2 text-6xl z-0 w-full text-white opacity-50 font-extrabold overflow-hidden absolute -mt-2 text-6xl z-0 w-full text-white opacity-50 font-extrabold overflow-hidden;
+}
+
+.pokemon-details-img {
+  @apply flex w-full h-full items-center justify-center;
+}
+.pokemon-details-img-mask,
+.pokemon-details-img-wrapper {
+  @apply absolute;
+}
+
+.pokemon-details-img-mask {
+  min-width: 16.25ch;
+  min-height: 16.25ch;
+  max-width: 18ch;
+  max-height: 18ch;
+
+  @apply w-3/4 h-3/4 rounded-full;
+}
+.pokemon-details-img-wrapper {
+  width: 22ch;
+  height: 22ch;
+}
+
+.pokemon-details-header-skeleton {
+  @apply pokemon-details-header animate-pulse;
+}
+.pokemon-details-header-content-skeleton {
+  @apply pokemon-details-header-content;
+}
+.pokemon-details-header-title-container-skeleton {
+  @apply pokemon-details-header-title-container;
+}
+.pokemon-details-header-subtitle-skeleton {
+  @apply pokemon-details-header-subtitle w-2/6 md:w-2/12 h-4 bg-gray-50 rounded-full;
+}
+.pokemon-details-header-title-skeleton {
+  @apply pokemon-details-header-title mt-4 w-3/6 md:w-3/12 h-4 bg-gray-50 rounded-full;
+}
+.pokemon-details-header-body-skeleton {
+  @apply pokemon-details-header-body flex items-center justify-center;
+}
+.pokemon-details-header-img-skeleton {
+  @apply pokemon-details-img-mask bg-gray-50;
+}
