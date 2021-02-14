@@ -50,7 +50,8 @@ export const PokemonCardContent: React.VFC<PokemonCardContentProps> = (
       >
         <PokemonImg
           id={props.id}
-          src={data.sprites.front_default}
+          preview={data.sprites.front_default}
+          src={data.sprites.hq_front_default}
           name={data.name}
           types={data.types}
         />

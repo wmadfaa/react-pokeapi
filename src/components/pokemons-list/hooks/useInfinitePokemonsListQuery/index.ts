@@ -1,11 +1,11 @@
 import { useInfiniteQuery, useIsFetching, useQueryClient } from "react-query";
 import { useAsyncCallback } from "react-async-hook";
+import { FetchInfiniteQueryOptions } from "react-query/types/core/types";
 import {
   getPokemonsList,
-  TransformedPokemonsList,
   PokemonsListParams,
+  TransformedPokemonsList,
 } from "api";
-import { FetchInfiniteQueryOptions } from "react-query/types/core/types";
 
 const DEFAULT_POKEMONS_LIST_PARAMS: PokemonsListParams = {
   limit: 20,

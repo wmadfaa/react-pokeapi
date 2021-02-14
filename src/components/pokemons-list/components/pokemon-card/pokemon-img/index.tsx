@@ -1,22 +1,23 @@
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import ProgressiveImage from "react-progressive-image-loading";
-import { Type } from "types/pokeapi";
-import { getPokemonImgAttrByTypes } from "utils/components";
+import { Type } from "api";
+import { getPokemonColorsByTypes } from "utils/components";
 
 const IMG_SIZE = 150;
 const MASK_SIZE = 200;
 
 export interface PokemonImgProps {
   id: string;
+  preview: string;
   src: string;
   name: string;
   types: Type[];
 }
 
 export const PokemonImg: React.VFC<PokemonImgProps> = (props) => {
-  const { colors, placeholders } = useMemo(
-    () => getPokemonImgAttrByTypes(props.types),
+  const [{ light: backgroundColor }] = useMemo(
+    () => getPokemonColorsByTypes(props.types),
     [props.types]
   );
 
@@ -27,7 +28,7 @@ export const PokemonImg: React.VFC<PokemonImgProps> = (props) => {
         style={{
           width: MASK_SIZE,
           height: MASK_SIZE,
-          backgroundColor: colors[0].light,
+          backgroundColor,
         }}
       />
       <div
@@ -39,7 +40,7 @@ export const PokemonImg: React.VFC<PokemonImgProps> = (props) => {
         }}
       >
         <ProgressiveImage
-          preview={placeholders[0]}
+          preview={props.preview}
           src={props.src}
           transitionTime={500}
           render={(src, style) => (

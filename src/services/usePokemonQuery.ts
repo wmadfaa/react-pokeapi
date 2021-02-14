@@ -1,7 +1,6 @@
 import { useIsFetching, useQuery, useQueryClient } from "react-query";
-import { getPokemon } from "../api";
 import { useAsyncCallback } from "react-async-hook";
-import { Pokemon } from "../types/pokeapi";
+import { Pokemon, getPokemon } from "api";
 
 export function usePokemonQuery(id: string) {
   return useQuery<Pokemon, Error, Pokemon>(["pokemon", id], async () =>

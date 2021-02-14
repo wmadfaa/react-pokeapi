@@ -1,4 +1,4 @@
-import { Ability } from "types/pokeapi";
+import { Ability } from "../pokeapi-types";
 import { httpClient } from "../http-client";
 
 export async function getPokemonAbility(name: string) {

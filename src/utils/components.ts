@@ -1,13 +1,10 @@
-import { Type } from "../types/pokeapi";
+import { Type } from "api";
 import { compact, get, map } from "lodash";
-import { PokemonTypeColors, PokemonTypePlaceholders } from "../globals";
+import { PokemonTypeColors } from "../globals";
 
-export function getPokemonImgAttrByTypes(PokemonTypes: Type[]) {
+export function getPokemonColorsByTypes(PokemonTypes: Type[]) {
   const matcher = <T extends any>(col: Record<string, T>): T[] =>
     compact(map(PokemonTypes, ({ type }) => get(col, type.name)));
 
-  return {
-    colors: matcher(PokemonTypeColors),
-    placeholders: matcher(PokemonTypePlaceholders),
-  };
+  return matcher(PokemonTypeColors);
 }

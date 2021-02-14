@@ -1,6 +1,5 @@
 import { useQuery } from "react-query";
-import { Ability } from "types/pokeapi";
-import { getPokemonAbility } from "api/getters/pokemon-ability";
+import { Ability, getPokemonAbility } from "api";
 
 export function usePokemonAbilityQuery(name: string) {
   return useQuery<Ability, Error, Ability>(

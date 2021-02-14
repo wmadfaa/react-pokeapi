@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import ProgressiveImage from "react-progressive-image-loading";
 import { useSpring, animated } from "react-spring";
-import { Type } from "types/pokeapi";
-import { getPokemonImgAttrByTypes } from "utils/components";
+import { Type } from "api";
+import { getPokemonColorsByTypes } from "utils/components";
 
 const calc = (x: number, y: number) => [
   x - window.innerWidth / 2,
@@ -15,14 +15,15 @@ const img_trans = (x: number, y: number) =>
 
 export interface PokemonDetailsImgProps {
   id: string;
+  preview: string;
   src: string;
   name: string;
   types: Type[];
 }
 
 export const PokemonDetailsImg: React.VFC<PokemonDetailsImgProps> = (props) => {
-  const { colors, placeholders } = useMemo(
-    () => getPokemonImgAttrByTypes(props.types),
+  const [{ light: backgroundColor }] = useMemo(
+    () => getPokemonColorsByTypes(props.types),
     [props.types]
   );
 
@@ -39,13 +40,13 @@ export const PokemonDetailsImg: React.VFC<PokemonDetailsImgProps> = (props) => {
       <animated.div
         className="pokemon-details-img-mask"
         style={{
-          backgroundColor: colors[0].light,
+          backgroundColor,
           // @ts-ignore
           transform: springProps.xy.interpolate(mask_trans),
         }}
       />
       <ProgressiveImage
-        preview={placeholders[0]}
+        preview={props.preview}
         src={props.src}
         transitionTime={500}
         render={(src, style) => (

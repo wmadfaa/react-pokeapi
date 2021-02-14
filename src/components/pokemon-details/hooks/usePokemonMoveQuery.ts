@@ -1,6 +1,5 @@
 import { useQuery } from "react-query";
-import { PokemonMoveDetails } from "types/pokeapi";
-import { getPokemonMove } from "api/getters/pokemon-move";
+import { PokemonMoveDetails, getPokemonMove } from "api";
 
 export function usePokemonMoveQuery(name: string) {
   return useQuery<PokemonMoveDetails, Error, PokemonMoveDetails>(
