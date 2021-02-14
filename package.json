@@ -2,6 +2,7 @@
   "name": "pokeapi-challenge",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://wmadfaa.github.io/pokeapi-challenge",
   "dependencies": {
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
@@ -48,6 +49,7 @@
     "@types/react-router-dom": "^5.1.7",
     "autoprefixer": "^9",
     "craco-esbuild": "^0.2.0",
+    "gh-pages": "^3.1.0",
     "husky": "^5.0.9",
     "lint-staged": "^10.5.4",
     "postcss": "^7",
@@ -66,7 +68,9 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test"
+    "test": "craco test",
+    "predeploy": "pnpm build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

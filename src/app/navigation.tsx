@@ -10,7 +10,7 @@ export function Navigation() {
     <div className="screen">
       <AnimateSharedLayout type="crossfade">
         <Header />
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Route path={["/:id", "/"]} component={DetailsScreen} />
         </Router>
       </AnimateSharedLayout>
