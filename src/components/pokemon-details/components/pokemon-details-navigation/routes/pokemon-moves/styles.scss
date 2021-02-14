@@ -1,0 +1,75 @@
+.pokemon-moves-list {
+  @apply divide-y divide-gray-200;
+}
+
+.pokemon-move {
+  @apply transition-colors duration-300 relative bg-trueGray-800 py-5 px-4 hover:bg-gray-800 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600;
+}
+
+.pokemon-move-header {
+  @apply flex justify-between space-x-3;
+}
+
+.pokemon-move-header-title-container {
+  @apply min-w-0 flex-1;
+}
+
+.pokemon-move-header-title-content {
+  @apply block focus:outline-none;
+}
+
+.pokemon-move-name {
+  @apply text-sm font-medium text-gray-100 truncate;
+}
+
+.pokemon-move-short-effect {
+  @apply text-sm text-gray-500 truncate;
+}
+
+.pokemon-move-generation-name {
+  @apply flex-shrink-0 whitespace-nowrap text-sm text-gray-500;
+}
+
+.pokemon-move-effect-wrapper {
+  @apply mt-1;
+}
+
+.pokemon-move-effect {
+  @apply line-clamp-2 text-sm text-gray-400;
+}
+
+.pokemon-move-skeleton {
+  @apply pokemon-move animate-pulse;
+}
+
+.pokemon-move-header-skeleton {
+  @apply pokemon-move-header;
+}
+
+.pokemon-move-header-title-container-skeleton {
+  @apply pokemon-move-header-title-container;
+}
+
+.pokemon-move-header-title-content-skeleton {
+  @apply pokemon-move-header-title-content mb-2;
+}
+
+.pokemon-move-name-skeleton {
+  @apply pokemon-move-name w-3/12 md:w-3/12 h-4 bg-gray-50 rounded-full;
+}
+
+.pokemon-move-short-effect-skeleton {
+  @apply pokemon-move-short-effect;
+}
+
+.pokemon-move-generation-name-skeleton {
+  @apply pokemon-move-generation-name w-1/6 md:w-2/12 h-4 bg-gray-50 rounded-full;
+}
+
+.pokemon-move-effect-wrapper-skeleton {
+  @apply pokemon-move-effect-wrapper mt-4;
+}
+
+.pokemon-move-effect-skeleton {
+  @apply pokemon-move-effect mb-2 first:w-3/6 w-4/6 md:first:w-6/12 md:w-8/12 h-4 bg-gray-50 rounded-full;
+}

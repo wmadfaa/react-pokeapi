@@ -7,7 +7,7 @@
 }
 
 .pokemon-details-content {
-  max-height: 592px;
+  max-height: 612px;
   @apply pointer-events-auto overflow-y-auto flex bg-gray-900 flex-col lg:flex-row w-full mx-auto my-4 rounded-lg shadow-lg;
 
   @screen md {
@@ -20,7 +20,7 @@
 }
 
 .pokemon-details-header-content {
-  @apply w-full;
+  @apply w-full h-full;
 }
 
 .pokemon-details-header-title-container {
@@ -62,8 +62,12 @@
 }
 
 .pokemon-details-navigation {
-  @apply bg-gray-900 flex-shrink-0 px-6 py-8 w-full;
+  max-height: 612px;
+  @apply bg-gray-900 flex-shrink-0 px-6 pb-8 w-full overflow-y-auto;
 
+  @screen md {
+    max-height: 655px;
+  }
   @screen lg {
     min-width: 50%;
     max-width: 60%;

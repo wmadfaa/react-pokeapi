@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from "react";
-import { usePokemonAbilityQuery } from "../../../../../hooks/usePokemonAbilityQuery";
+import { usePokemonAbilityQuery } from "../../../../../../hooks/usePokemonAbilityQuery";
 import { find } from "lodash";
 
 export interface PokemonAbilityContentProps {
