@@ -3,7 +3,12 @@ export const ROUTES = <const>{
   DETAILS: "/details/:id",
 };
 
-export const PokemonTypeColors = {
+interface PokemonTypeColor {
+  light: string;
+  medium: string;
+}
+
+export const POKEMON_TYPE_COLORS: Record<string, PokemonTypeColor> = {
   normal: {
     light: "#cdcdb9",
     medium: "#C4C4A4",
@@ -78,7 +83,7 @@ export const PokemonTypeColors = {
   },
 };
 
-export const pokemonTailwindColors: Record<string, string> = {
+export const POKEMON_TAILWIND_COLORS: Record<string, string> = {
   normal: "amber",
   fire: "orange",
   fighting: "red",
