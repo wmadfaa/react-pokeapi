@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/pokeapi-challenge/static/css/main.2be12d48.chunk.css",
+    "main.js": "/pokeapi-challenge/static/js/main.b9960081.chunk.js",
+    "main.js.map": "/pokeapi-challenge/static/js/main.b9960081.chunk.js.map",
+    "runtime-main.js": "/pokeapi-challenge/static/js/runtime-main.2f46b2fe.js",
+    "runtime-main.js.map": "/pokeapi-challenge/static/js/runtime-main.2f46b2fe.js.map",
+    "static/js/2.5d0e016a.chunk.js": "/pokeapi-challenge/static/js/2.5d0e016a.chunk.js",
+    "static/js/2.5d0e016a.chunk.js.map": "/pokeapi-challenge/static/js/2.5d0e016a.chunk.js.map",
+    "static/js/3.44f0489a.chunk.js": "/pokeapi-challenge/static/js/3.44f0489a.chunk.js",
+    "static/js/3.44f0489a.chunk.js.map": "/pokeapi-challenge/static/js/3.44f0489a.chunk.js.map",
+    "index.html": "/pokeapi-challenge/index.html",
+    "service-worker.js": "/pokeapi-challenge/service-worker.js",
+    "service-worker.js.map": "/pokeapi-challenge/service-worker.js.map",
+    "static/css/main.2be12d48.chunk.css.map": "/pokeapi-challenge/static/css/main.2be12d48.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2f46b2fe.js",
+    "static/js/2.5d0e016a.chunk.js",
+    "static/css/main.2be12d48.chunk.css",
+    "static/js/main.b9960081.chunk.js"
+  ]
+}
