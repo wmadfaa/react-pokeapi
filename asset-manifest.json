@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pokeapi-challenge/static/css/main.2be12d48.chunk.css",
-    "main.js": "/pokeapi-challenge/static/js/main.4c12f827.chunk.js",
-    "main.js.map": "/pokeapi-challenge/static/js/main.4c12f827.chunk.js.map",
+    "main.js": "/pokeapi-challenge/static/js/main.0592c503.chunk.js",
+    "main.js.map": "/pokeapi-challenge/static/js/main.0592c503.chunk.js.map",
     "runtime-main.js": "/pokeapi-challenge/static/js/runtime-main.2f46b2fe.js",
     "runtime-main.js.map": "/pokeapi-challenge/static/js/runtime-main.2f46b2fe.js.map",
     "static/js/2.5d0e016a.chunk.js": "/pokeapi-challenge/static/js/2.5d0e016a.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.2f46b2fe.js",
     "static/js/2.5d0e016a.chunk.js",
     "static/css/main.2be12d48.chunk.css",
-    "static/js/main.4c12f827.chunk.js"
+    "static/js/main.0592c503.chunk.js"
   ]
 }
