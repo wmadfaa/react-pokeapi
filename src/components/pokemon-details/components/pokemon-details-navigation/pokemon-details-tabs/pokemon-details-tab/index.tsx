@@ -1,24 +1,26 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import classNames from "classnames";
 
-export interface PokemonDetailsTabProps {
-  to: string;
+export interface PokemonDetailsTabProps<T> {
+  onClick(id: T): void;
+  id: T;
   label: string;
-  current?: boolean;
+  current: boolean;
 }
 
-export const PokemonDetailsTab: React.VFC<PokemonDetailsTabProps> = (props) => {
+export function PokemonDetailsTab<T>(
+  props: PokemonDetailsTabProps<T>
+): JSX.Element {
   return (
-    <NavLink
-      to={props.to}
-      activeClassName="current"
+    <div
+      onClick={() => props.onClick(props.id)}
       className={classNames("pokemon-details-tab", {
         default: !props.current,
+        current: props.current,
       })}
       aria-current={props.current ? "page" : undefined}
     >
       {props.label}
-    </NavLink>
+    </div>
   );
-};
+}

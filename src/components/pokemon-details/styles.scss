@@ -62,11 +62,11 @@
 }
 
 .pokemon-details-navigation {
-  max-height: 612px;
+  height: 612px;
   @apply bg-gray-900 flex-shrink-0 px-6 pb-8 w-full overflow-y-auto;
 
   @screen md {
-    max-height: 655px;
+    height: 655px;
   }
   @screen lg {
     min-width: 50%;
