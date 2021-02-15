@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import { BASE_URL } from "../api/constants";
+import { BASE_URL } from "../constants/api";
 
 export const handlers = [
   rest.get(`${BASE_URL}ability/mock-success`, (req, res, ctx) => {

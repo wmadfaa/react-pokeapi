@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import ProgressiveImage from "react-progressive-image-loading";
 import { useSpring, animated } from "react-spring";
 import { Type } from "api";
-import { getPokemonColorsByTypes } from "utils/components";
+import { index } from "utils/getPokemonColorsByTypes";
 
 const calc = (x: number, y: number) => [
   x - window.innerWidth / 2,
@@ -22,10 +22,9 @@ export interface PokemonDetailsImgProps {
 }
 
 export const PokemonDetailsImg: React.VFC<PokemonDetailsImgProps> = (props) => {
-  const [{ light: backgroundColor }] = useMemo(
-    () => getPokemonColorsByTypes(props.types),
-    [props.types]
-  );
+  const [{ light: backgroundColor }] = useMemo(() => index(props.types), [
+    props.types,
+  ]);
 
   const [springProps, set] = useSpring(() => ({
     xy: [0, 0],

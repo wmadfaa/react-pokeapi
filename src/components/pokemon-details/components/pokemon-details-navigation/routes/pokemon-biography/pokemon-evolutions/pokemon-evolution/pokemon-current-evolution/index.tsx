@@ -5,7 +5,10 @@ export const PokemonCurrentEvolution: React.VFC<{
   name: string;
 }> = ({ id, name }) => {
   return (
-    <div className="px-6 py-4 flex items-center text-sm font-medium">
+    <div
+      data-testid="pokemon-current-evolution"
+      className="px-6 py-4 flex items-center text-sm font-medium"
+    >
       <span
         className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full"
         aria-current="step"

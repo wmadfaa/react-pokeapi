@@ -35,7 +35,6 @@ export const PokemonEvolutions: React.VFC<PokemonEvolutionsProps> = (props) => {
             id={id}
             name={name}
             type={getTypeByIndex(index, evolutions)}
-            isLastPokemonEvolution={index === evolutions.length - 1}
           />
         ))}
       </ol>

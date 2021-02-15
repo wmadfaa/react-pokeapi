@@ -1,4 +1,4 @@
-import { isNumeric } from "./type-guards";
+import { isNumeric } from "../type-guards";
 
 export const leftPad = (
   number: number | string,

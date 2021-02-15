@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
-import { leftPad } from "utils/leftPad";
+import { index } from "utils/leftPad";
 import { usePokemonQuery } from "services/usePokemonQuery";
 import { PokemonImg } from "../pokemon-img";
 
@@ -13,7 +13,7 @@ export const PokemonCardContent: React.VFC<PokemonCardContentProps> = (
   props
 ) => {
   const { data, isLoading } = usePokemonQuery(props.id);
-  const subtitle = useMemo(() => leftPad(props.id, 3), [props.id]);
+  const subtitle = useMemo(() => index(props.id, 3), [props.id]);
 
   useEffect(() => {
     if (data && !isLoading) props.setIsLoading(false);

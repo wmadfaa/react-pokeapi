@@ -1,12 +1,12 @@
 import React, { useMemo } from "react";
 import { find } from "lodash";
 import { motion } from "framer-motion";
-import { leftPad } from "utils/leftPad";
+import { index } from "utils/leftPad";
 import { usePokemonQuery } from "services/usePokemonQuery";
 import { usePokemonSpeciesQuery } from "services/usePokemonSpeciesQuery";
 import { PokemonDetailsImg } from "./pokemon-details-img";
 import { PokemonDetailsHeaderSkeleton } from "./pokemon-details-header-skeleton";
-import { getPokemonColorsByTypes } from "utils/components";
+import { index } from "utils/getPokemonColorsByTypes";
 
 export interface PokemonDetailsHeaderProps {
   id: string;
@@ -18,7 +18,7 @@ export const PokemonDetailsHeader: React.VFC<PokemonDetailsHeaderProps> = (
   const { data: pokemon } = usePokemonQuery(props.id);
   const { data: species } = usePokemonSpeciesQuery(props.id);
   const backgroundColor = useMemo(
-    () => (pokemon ? getPokemonColorsByTypes(pokemon.types)[0].medium : null),
+    () => (pokemon ? index(pokemon.types)[0].medium : null),
     [pokemon]
   );
 
@@ -48,7 +48,7 @@ export const PokemonDetailsHeader: React.VFC<PokemonDetailsHeaderProps> = (
             className="pokemon-details-header-subtitle"
             layoutId={`pokemon-card-subtitle-${props.id}`}
           >
-            #{leftPad(props.id, 3)}
+            #{index(props.id, 3)}
           </motion.p>
           <motion.h1
             className="pokemon-details-header-title"

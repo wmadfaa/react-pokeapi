@@ -1,11 +1,14 @@
 import React from "react";
 
-export const PokemonPreviousEvolution: React.VFC<{
+export const PokemonCompletedEvolution: React.VFC<{
   id: number;
   name: string;
 }> = ({ name }) => {
   return (
-    <div className="group flex items-center w-full">
+    <div
+      data-testid="pokemon-completed-evolution"
+      className="group flex items-center w-full"
+    >
       <span className="px-6 py-4 flex items-center text-sm font-medium">
         <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-indigo-600 rounded-full group-hover:bg-indigo-800">
           <svg

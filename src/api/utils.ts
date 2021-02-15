@@ -1,7 +1,7 @@
 import { compact } from "lodash";
-import { leftPad } from "utils/leftPad";
+import { index } from "utils/leftPad";
 import { isNumeric } from "utils/type-guards";
-import { HQ_SPRITES_URL } from "./constants";
+import { HQ_SPRITES_URL } from "../constants/api";
 
 export const extractSearchParams = <T extends object>(
   url: string,
@@ -22,7 +22,7 @@ export const transformSpriteToBaseImage = (
   pokemonId: number,
   baseUrl: string
 ): string => {
-  return baseUrl + leftPad(pokemonId, 3) + ".png";
+  return baseUrl + index(pokemonId, 3) + ".png";
 };
 
 export function extractIdFromUrl(url: string): string {

@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import ProgressiveImage from "react-progressive-image-loading";
 import { Type } from "api";
-import { getPokemonColorsByTypes } from "utils/components";
+import { index } from "utils/getPokemonColorsByTypes";
 
 const IMG_SIZE = 150;
 const MASK_SIZE = 200;
@@ -16,10 +16,9 @@ export interface PokemonImgProps {
 }
 
 export const PokemonImg: React.VFC<PokemonImgProps> = (props) => {
-  const [{ light: backgroundColor }] = useMemo(
-    () => getPokemonColorsByTypes(props.types),
-    [props.types]
-  );
+  const [{ light: backgroundColor }] = useMemo(() => index(props.types), [
+    props.types,
+  ]);
 
   return (
     <motion.div className="pokemon-img" layoutId={`pokemon-img-${props.id}`}>

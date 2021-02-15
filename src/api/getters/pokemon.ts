@@ -1,6 +1,6 @@
 import deepmerge from "deepmerge";
 import { getPokemonImageUrl } from "../utils";
-import { BASE_SPRITES_URL } from "../constants";
+import { BASE_SPRITES_URL } from "../../constants/api";
 import { httpClient } from "../http-client";
 import { Pokemon } from "../pokeapi-types";
 
